@@ -1,2 +1,2 @@
 # ML-in-Medical-Sciences
-How ML helps in Medical Sciences
+Applications of ML helps in Medical Sciences
