@@ -8,7 +8,7 @@ pathToDataset = r"dataset/breast_cancer_wisconsindata.csv"
 classes = ['benign','malignant']
 
 #Saved model path
-model_DNN_path = r"saved_model/BreastCancerANN.h5"
+model_DNN_path = r"saved_model/BreastCancerDNN.h5"
 model_CNN_path = r"saved_model/BreastCancerCNN.h5"
 
 #Load dataset
@@ -51,22 +51,22 @@ model.predict(x_test,classes=classes)
 
 
 """ models - CNN1d"""
-## Convolutional 1D Deep Neural Network 
+# ## Convolutional 1D Deep Neural Network 
 model = CNN1d()
 
-#Train model
+# #Train model
 model.trainModel(x_train ,y_train,validation_data=(x_test, y_test),classes = classes ,epochs = 100,batch_size = 10,verbose=1)
 
-# # Validate model (in a creative way)
+# # # Validate model (in a creative way)
 model.validate(x_test,y_test,classes=classes)
 
-#Plot training vs Validation graph
+# #Plot training vs Validation graph
 model.visualize()
 
-# Load trained CNN model
+# # Load trained CNN model
 model.loadModel(model_CNN_path)
 
-#Predict model
+# #Predict model
 model.predict(x_test,classes=classes)
 
 
