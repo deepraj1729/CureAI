@@ -16,11 +16,12 @@ Applications of ML in Medical Sciences
 # Training and Validation graphs per epochs:
 
 ### DNN Model:
-![dnn30](training_graphs/DNN_30.png)  ![dnn30](training_graphs/DNN_50.png)  ![dnn30](training_graphs/DNN_100.png) 
+
+<img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/DNN_30.png" width = "200" height = "100"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/DNN_50.png" width = "200" height = "100"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/DNN_100.png" width = "200" height = "100"> 
  
 ### CNN1d Model:
-![dnn30](training_graphs/CNN1d_30.png)  ![dnn30](training_graphs/CNN1d_50.png)  ![dnn30](training_graphs/CNN1d_100.png) 
 
+<img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/CNN1d_30.png" width = "200" height = "100"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/CNN1d_50.png" width = "200" height = "100"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/CNN1d_100.png" width = "200" height = "100"> 
 
 ### Conclusion:
 Clearly, the dataset is small for reducing the validation loss close to training loss, yet, the `Conv1d` model trained better than the `DNN model` for the most part
