@@ -1,5 +1,5 @@
 from functions.loadData import loadDf
-from functions.preprocess import dropCol,handleMissing
+from functions.preprocess import dropCol,handleMissing,normalizeData
 from classifiers.models import DNN,CNN1d
 from sklearn.model_selection import train_test_split
 import numpy as np
@@ -7,6 +7,7 @@ import numpy as np
 pathToDataset = r"dataset/breast_cancer_wisconsindata.csv"
 classes = ['benign','malignant']
 
+#Saved model path
 model_DNN_path = r"saved_model/BreastCancerANN.h5"
 model_CNN_path = r"saved_model/BreastCancerCNN.h5"
 
@@ -21,8 +22,12 @@ data = dropCol(data,['id'])
 y = np.array(data['class'])
 X = np.array(dropCol(data,['class']),dtype='float64')
 
+# Normalized data
+X_norm = normalizeData(X)
+
 #Splitting data into training and testing set
-x_train ,x_test , y_train, y_test = train_test_split(X,y, test_size = 0.1)
+x_train ,x_test , y_train, y_test = train_test_split(X_norm,y, test_size = 0.1)  #Noralized split for cross-validation
+# x_train ,x_test , y_train, y_test = train_test_split(X,y, test_size = 0.1)     #Direct Split for cross-validation
 
 
 """ models - DNN"""                               #Run any of the two models
@@ -30,10 +35,10 @@ x_train ,x_test , y_train, y_test = train_test_split(X,y, test_size = 0.1)
 model = DNN()
 
 # Train model
-model.trainModel(x_train ,y_train,validation_data=(x_test, y_test),classes = classes ,epochs = 30,batch_size = 10,verbose=1)
+model.trainModel(x_train ,y_train,validation_data=(x_test, y_test),classes = classes ,epochs = 100,batch_size = 10,verbose=1)
 
 # Validate model (in a creative way)
-# model.validate(x_test,y_test,classes=classes)
+model.validate(x_test,y_test,classes=classes)
 
 # Plot training vs Validation graph
 model.visualize()
@@ -50,10 +55,10 @@ model.predict(x_test,classes=classes)
 model = CNN1d()
 
 #Train model
-model.trainModel(x_train ,y_train,validation_data=(x_test, y_test),classes = classes ,epochs = 30,batch_size = 10,verbose=1)
+model.trainModel(x_train ,y_train,validation_data=(x_test, y_test),classes = classes ,epochs = 100,batch_size = 10,verbose=1)
 
 # # Validate model (in a creative way)
-# model.validate(x_test,y_test,classes=classes)
+model.validate(x_test,y_test,classes=classes)
 
 #Plot training vs Validation graph
 model.visualize()

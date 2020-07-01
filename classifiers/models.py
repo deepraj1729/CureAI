@@ -57,12 +57,19 @@ class DNN:
 
         self.modelHistory = self.model.fit(x_train ,y_train , epochs =epochs,batch_size = batch_size,validation_data = (x_test,y_test),verbose =verbose)
 
-        self.model.save(saved_model_path + "BreastCancerANN.h5")
+        self.model.save(saved_model_path + "BreastCancer_norm_ANN.h5")
+        # self.model.save(saved_model_path + "BreastCancerANN.h5")
         print("\n\n-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------")
         print("                         Saving trained Model......")
         print("-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------")
-        print("Model saved in disc as \'BreastCancerANN.h5\' file in path: {}".format(saved_model_path))
+        print("Model saved in disc as \'BreastCancer_norm_ANN.h5\' file in path: {}".format(saved_model_path))
         print("-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------\n")
+
+        # print("\n\n-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------")
+        # print("                         Saving trained Model......")
+        # print("-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------")
+        # print("Model saved in disc as \'BreastCancerANN.h5\' file in path: {}".format(saved_model_path))
+        # print("-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------\n")
     
     def validate(self,x,y,classes=[]):
         print("\n\nValidating Model")
@@ -119,15 +126,18 @@ class DNN:
         print(t_tot)
     
     def visualize(self):
+        graph_name = "DNN_norm_{}.png".format(self.epochs)
+        # graph_name = "DNN_{}.png".format(self.epochs)
         plt.plot(self.modelHistory.history['loss'])
         plt.plot(self.modelHistory.history['val_loss'])
-        plt.title('model train vs validation loss for DNN model, epochs = {}'.format(self.epochs))
+        plt.title('model train vs validation loss for DNN model (on Normalized data), epochs = {}'.format(self.epochs))
+        # plt.title('model train vs validation loss for DNN model, epochs = {}'.format(self.epochs))
         plt.ylabel('loss')
         plt.xlabel('epoch')
         plt.legend(['train', 'validation'], loc='upper right')
-        plt.savefig('training_graphs/DNN_{}.png'.format(self.epochs))
+        plt.savefig('training_graphs/{}'.format(graph_name))
         plt.show()
-        print("Graph saved in 'training_graphs' directory")
+        print("Graph saved in 'training_graphs' directory as {}".format(graph_name))
 
 
 
@@ -167,13 +177,28 @@ class CNN1d:
         #input shape = (1,num_of_feautures)
         inp_shape = (x_train.shape[1],x_train.shape[2])
 
+        """Architecture 1"""
+        # self.model = Sequential()
+        # self.model.add(Conv1D(filters=64, kernel_size=1, activation='relu', input_shape=inp_shape))
+        # self.model.add(Conv1D(filters=32, kernel_size=1, activation='relu'))
+        # self.model.add(MaxPooling1D(pool_size=1))
+        # self.model.add(Flatten())
+        # self.model.add(Dense(100, activation='relu'))
+        # self.model.add(Dense(len(self.classes), activation='sigmoid'))
+
+        """Architecture 2 (more complex)"""
         self.model = Sequential()
-        self.model.add(Conv1D(filters=64, kernel_size=1, activation='relu', input_shape=inp_shape))
-        self.model.add(Conv1D(filters=128, kernel_size=1, activation='relu'))
-        # model.add(Dropout(0.5))
+        self.model.add(Conv1D(filters=128, kernel_size=1, activation='relu', input_shape=inp_shape))
+        self.model.add(BatchNormalization(axis=1))
+        self.model.add(MaxPooling1D(pool_size=1))
+        self.model.add(Conv1D(64,kernel_size=1, activation='relu'))
+        self.model.add(BatchNormalization(axis=1))
+        self.model.add(MaxPooling1D(pool_size=1))
+        self.model.add(Conv1D(32, kernel_size=1, activation='relu'))
         self.model.add(MaxPooling1D(pool_size=1))
         self.model.add(Flatten())
-        self.model.add(Dense(100, activation='relu'))
+        self.model.add(Dense(16, activation='relu'))
+        self.model.add(BatchNormalization())
         self.model.add(Dense(len(self.classes), activation='sigmoid'))
 
         self.model.compile(optimizer = "adam",
@@ -189,12 +214,19 @@ class CNN1d:
 
         self.modelHistory = self.model.fit(x_train ,y_train , epochs =epochs,batch_size = batch_size,validation_data = (x_test,y_test),verbose =verbose)
 
-        self.model.save(saved_model_path + "BreastCancerCNN.h5")
+        self.model.save(saved_model_path + "BreastCancer_norm_CNN.h5")
+        # self.model.save(saved_model_path + "BreastCancerCNN.h5")
         print("\n\n-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------")
         print("                         Saving trained Model......")
         print("-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------")
-        print("Model saved in disc as \'BreastCancerCNN.h5\' file in path: {}".format(saved_model_path))
+        print("Model saved in disc as \'BreastCancer_norm_CNN.h5\' file in path: {}".format(saved_model_path))
         print("-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------\n")
+
+        # print("\n\n-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------")
+        # print("                         Saving trained Model......")
+        # print("-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------")
+        # print("Model saved in disc as \'BreastCancerCNN.h5\' file in path: {}".format(saved_model_path))
+        # print("-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------\n")
     
     def validate(self,x,y,classes=[]):
         print("\n\nValidating Model")
@@ -260,12 +292,15 @@ class CNN1d:
         print(t_tot)
     
     def visualize(self):
+        graph_name = "CNN1d_norm_{}.png".format(self.epochs)
+        # graph_name = "CNN1d_{}.png".format(self.epochs)
         plt.plot(self.modelHistory.history['loss'])
         plt.plot(self.modelHistory.history['val_loss'])
-        plt.title('model train vs validation loss for Conv1D model, epochs = {}'.format(self.epochs))
+        plt.title('model train vs validation loss for Conv1D model (on Normalized data), epochs = {}'.format(self.epochs))
+        # plt.title('model train vs validation loss for Conv1D model , epochs = {}'.format(self.epochs))
         plt.ylabel('loss')
         plt.xlabel('epoch')
         plt.legend(['train', 'validation'], loc='upper right')
-        plt.savefig('training_graphs/CNN1d_{}.png'.format(self.epochs))
+        plt.savefig('training_graphs/{}'.format(graph_name))
         plt.show()
-        print("Graph saved in 'training_graphs' directory")
+        print("Graph saved in 'training_graphs' directory as {}".format(graph_name))
