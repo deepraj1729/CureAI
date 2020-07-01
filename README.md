@@ -17,11 +17,11 @@ Applications of ML in Medical Sciences
 
 ### DNN Model:
 
-<img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/DNN_30.png" width = "320" height = "200"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/DNN_50.png" width = "320" height = "200"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/DNN_100.png" width = "320" height = "200"> 
+<img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/DNN_30.png" width = "420" height = "300"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/DNN_50.png" width = "420" height = "300"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/DNN_100.png" width = "420" height = "300"> 
  
 ### CNN1d Model:
 
-<img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/CNN1d_30.png" width = "320" height = "200"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/CNN1d_50.png" width = "320" height = "200"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/CNN1d_100.png" width = "320" height = "200"> 
+<img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/CNN1d_30.png" width = "420" height = "300"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/CNN1d_50.png" width = "420" height = "300"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/CNN1d_100.png" width = "420" height = "300"> 
 
 ### Conclusion:
 Clearly, the dataset is `small` for reducing the `validation loss` close to `training loss` and the `variance` of the dataset is large, yet, the `Conv1d` model trained better than the `DNN model` for the most part.
