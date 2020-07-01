@@ -16,10 +16,10 @@ Applications of ML in Medical Sciences
 # Training and Validation graphs per epochs:
 
 ### DNN Model:
-![dnn30] (training_graphs/DNN_30.png)  ![dnn30] (training_graphs/DNN_50.png)  ![dnn30] (training_graphs/DNN_100.png) 
+![dnn30](training_graphs/DNN_30.png)  ![dnn30](training_graphs/DNN_50.png)  ![dnn30](training_graphs/DNN_100.png) 
  
 ### CNN1d Model:
-![dnn30] (training_graphs/CNN1d_30.png)  ![dnn30] (training_graphs/CNN1d_50.png)  ![dnn30] (training_graphs/CNN1d_100.png) 
+![dnn30](training_graphs/CNN1d_30.png)  ![dnn30](training_graphs/CNN1d_50.png)  ![dnn30](training_graphs/CNN1d_100.png) 
 
 
 ### Conclusion:
