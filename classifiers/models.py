@@ -11,8 +11,14 @@ from prettytable import PrettyTable
 from sklearn import model_selection
 import time
 import matplotlib.pyplot as plt
+from pathlib import Path
 
-saved_model_path = "./saved_model/"
+dir_path = os.path.dirname(os.path.realpath(__file__))
+root = Path(dir_path)
+
+model_name_1 = "BreastCancerDNN"
+model_name_2 = "BreastCancerCNN"
+model_version = "0001"
 
 class DNN:
     def __init__(self):
@@ -22,8 +28,7 @@ class DNN:
         self.epochs = 0
         print("\nDeep Neural Network Model initialized......")
     
-    def model_config(self,model_path): 
-        self.model = tf.keras.models.load_model(model_path)
+    def model_config(self): 
         self.model.summary()
 
     def loadModel(self,model_path):
@@ -57,13 +62,22 @@ class DNN:
 
         self.modelHistory = self.model.fit(x_train ,y_train , epochs =epochs,batch_size = batch_size,validation_data = (x_test,y_test),verbose =verbose)
 
-        self.model.save(saved_model_path + "BreastCancerANN.h5")
+        # self.model.save(saved_model_path + "BreastCancerANN.h5")
 
-        print("\n\n-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------")
-        print("                         Saving trained Model......")
-        print("-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------")
-        print("Model saved in disc as \'BreastCancerDNN.h5\' file in path: {}".format(saved_model_path))
-        print("-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------\n")
+        path_to_model = model_name_1 
+        path = os.path.join(path_to_model,model_version) 
+
+        try:  
+            os.makedirs(path, exist_ok = True)
+            tf.saved_model.save(self.model,path)
+
+            print("\n\n-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------")
+            print("                         Saving trained Model version {}......".format(model_version))
+            print("-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------")
+            print("Model saved in disc as \'saved_model.pb\' file in path: {}".format(model_name_1+"/"+model_version))
+            print("-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------\n")  
+        except OSError as error:  
+            print("Path already exists") 
     
     def validate(self,x,y,classes=[]):
         print("\n\nValidating Model")
@@ -208,14 +222,21 @@ class CNN1d:
 
         self.modelHistory = self.model.fit(x_train ,y_train , epochs =epochs,batch_size = batch_size,validation_data = (x_test,y_test),verbose =verbose)
 
-        self.model.save(saved_model_path + "BreastCancerCNN.h5")
+        path_to_model = model_name_2 
+        path = os.path.join(path_to_model,model_version) 
 
-        print("\n\n-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------")
-        print("                         Saving trained Model......")
-        print("-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------")
-        print("Model saved in disc as \'BreastCancerCNN.h5\' file in path: {}".format(saved_model_path))
-        print("-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------\n")
-    
+        try:  
+            os.makedirs(path, exist_ok = True)
+            tf.saved_model.save(self.model,path)
+
+            print("\n\n-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------")
+            print("                         Saving trained Model version {}......".format(model_version))
+            print("-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------")
+            print("Model saved in disc as \'saved_model.pb\' file in path: {}".format(model_name_1+"/"+model_version))
+            print("-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------\n")  
+        except OSError as error:  
+            print("Path already exists") 
+            
     def validate(self,x,y,classes=[]):
         print("\n\nValidating Model")
 
