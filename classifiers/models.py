@@ -18,7 +18,7 @@ root = Path(dir_path)
 
 model_name_1 = "BreastCancerDNN"
 model_name_2 = "BreastCancerCNN"
-model_version = "0001"
+model_version = "v1"
 
 class DNN:
     def __init__(self):
@@ -232,11 +232,11 @@ class CNN1d:
             print("\n\n-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------")
             print("                         Saving trained Model version {}......".format(model_version))
             print("-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------")
-            print("Model saved in disc as \'saved_model.pb\' file in path: {}".format(model_name_1+"/"+model_version))
+            print("Model saved in disc as \'saved_model.pb\' file in path: {}".format(model_name_2 +"/"+model_version))
             print("-----+-----+-----+-----+-----+-----+-----+------+------+-----+------+------\n")  
         except OSError as error:  
             print("Path already exists") 
-            
+
     def validate(self,x,y,classes=[]):
         print("\n\nValidating Model")
 

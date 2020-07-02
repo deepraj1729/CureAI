@@ -10,7 +10,7 @@ classes = ['benign','malignant']
 #Saved model path
 model_DNN_path = r"BreastCancerDNN/"
 model_CNN_path = r"BreastCancerCNN/"
-model_version = "0001"
+model_version = "v1"
 
 #Load dataset
 data = loadDf(pathToDataset)
@@ -33,7 +33,7 @@ x_train ,x_test , y_train, y_test = train_test_split(X_norm,y, test_size = 0.1) 
 
 """ models - DNN"""                               #Run any of the two models
 ## Deep Neural Network 
-model = DNN()
+# model = DNN()
 
 # Train model
 # model.trainModel(x_train ,y_train,validation_data=(x_test, y_test),classes = classes ,epochs = 10,batch_size = 10,verbose=1)
@@ -45,27 +45,27 @@ model = DNN()
 # model.visualize()
 
 # Load trained DNN model
-model.loadModel(model_DNN_path+model_version)
+# model.loadModel(model_DNN_path+model_version)
 
 # Model configurations
-model.model_config()
+# model.model_config()
 
 #Predict model
-model.predict(x_test,classes=classes)
+# model.predict(x_test,classes=classes)
 
 
 """ models - CNN1d"""
 # ## Convolutional 1D Deep Neural Network 
-# model = CNN1d()
+model = CNN1d()
 
 # #Train model
-# model.trainModel(x_train ,y_train,validation_data=(x_test, y_test),classes = classes ,epochs = 100,batch_size = 10,verbose=1)
+model.trainModel(x_train ,y_train,validation_data=(x_test, y_test),classes = classes ,epochs = 100,batch_size = 10,verbose=1)
 
 # # # Validate model (in a creative way)
 # model.validate(x_test,y_test,classes=classes)
 
 # #Plot training vs Validation graph
-# model.visualize()
+model.visualize()
 
 # # Load trained CNN model
 # model.loadModel(model_CNN_path + model_version)
