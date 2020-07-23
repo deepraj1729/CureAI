@@ -16,23 +16,30 @@ Applications of ML in Medical Sciences
 # Training and Validation graphs per epochs:
 
 ### DNN Model (Without Preprocessing):
+![dnn_30](training_graphs/DNN_30.png)
+![dnn_50](training_graphs/DNN_50.png)
+![dnn_100](training_graphs/DNN_100.png)
 
-<img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/DNN_30.png" width = "350" height = "250"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/DNN_50.png" width = "350" height = "250"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/DNN_100.png" width = "350" height = "250"> 
  
  
 ### CNN1d Model (Without Preprocessing):
 
-<img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/CNN1d_30.png" width = "350" height = "250"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/CNN1d_50.png" width = "350" height = "250"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/CNN1d_100.png" width = "350" height = "250"> 
+![cnn_30](training_graphs/CNN1d_30.png)
+![cnn_50](training_graphs/CNN1d_50.png)
+![cnn_100](training_graphs/CNN1d_100.png)
 
 
 ### DNN Model (With Preprocessing):
-
-<img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/DNN_norm_30.png" width = "350" height = "250"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/DNN_norm_50.png" width = "350" height = "250"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/DNN_norm_100.png" width = "350" height = "250"> 
+![dnn_30](training_graphs/DNN_norm_30.png)
+![dnn_50](training_graphs/DNN_norm_50.png)
+![dnn_100](training_graphs/DNN_norm_100.png)
  
  
 ### CNN1d Model (With Preprocessing):
 
-<img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/CNN1d_norm_30.png" width = "350" height = "250"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/CNN1d_norm_50.png" width = "350" height = "250"> <img src="https://github.com/deepraj1729/CureAI/blob/master/training_graphs/CNN1d_norm_100.png" width = "350" height = "250"> 
+![cnn_30](training_graphs/CNN1d_norm_30.png)
+![cnn_50](training_graphs/CNN1d_norm_50.png)
+![cnn_100](training_graphs/CNN1d_norm_100.png)
 
 ### Conclusion:
 Clearly, the dataset is `small` enough for reducing the `validation loss` close to `training loss` and the `variance` of the dataset is a bit high, yet, the `CNN1d` model trained better than the `DNN model` for the most part of the training and validation `(Cross-Validation)` with preprocessing.
