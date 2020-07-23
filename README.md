@@ -1,7 +1,7 @@
 # CureAI
 Applications of ML in Medical Sciences
 
-## 1. `Breast Cancer` Classifier
+## Breast Cancer Classifier
 - Dataset: `Breast_cancer_wisconsindata.csv`
 - Features: `id, clump_thickness, unif_cell_size, unif_cell_shape, marg_adhesion, single_epith_cell_size, bare_nuclei, bland_chrom, norm_nucleoli, mitoses, class`
 - Initial Shape = `(699,11)`
@@ -9,7 +9,7 @@ Applications of ML in Medical Sciences
 - Output = `2 [0,1] or [1,0]`
 - train-test split = `(0.2)`
 
-## Models (Type = Sequential):
+## Model Architectures: (Type = Sequential):
 - Deep Neural Network, DNN (4 layers)
 - Convolutional 1D Deep Neural Network (Conv1D, 2 convolution,1 maxpooling, 1 flatten, 2 Dense layers)
 
